@@ -243,64 +243,6 @@ document.addEventListener("DOMContentLoaded", function () {
         lastScroll = currentScroll;
     });
 
-    // === Waitlist Form Handling ===
-    document.querySelectorAll('.cta-button').forEach(button => {
-        button.addEventListener('click', () => {
-            // Create modal
-            const modal = document.createElement('div');
-            modal.className = 'waitlist-modal fade-in';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-modal">&times;</span>
-                    <h2>Join the Waitlist</h2>
-                    <p>Be among the first to experience Sanitas.AI</p>
-                    <form id="waitlist-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit" class="cta-button">Join Now</button>
-                    </form>
-                </div>
-            `;
-
-            // Add modal to page
-            document.body.appendChild(modal);
-            setTimeout(() => modal.classList.add('visible'), 10);
-
-            // Close modal functionality
-            const closeBtn = modal.querySelector('.close-modal');
-            closeBtn.addEventListener('click', () => {
-                modal.classList.remove('visible');
-                setTimeout(() => modal.remove(), 300);
-            });
-
-            // Form submission
-            const form = modal.querySelector('#waitlist-form');
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = form.querySelector('input[type="email"]').value;
-                
-                // Show loading state
-                const button = form.querySelector('button');
-                const originalText = button.textContent;
-                button.innerHTML = '<div class="loading-animation"></div>';
-                
-                try {
-                    // Here you would typically send the email to your backend
-                    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
-                    
-                    // Show success message
-                    modal.querySelector('.modal-content').innerHTML = `
-                        <h2>Thank You!</h2>
-                        <p>You're on the list! We'll notify you when Sanitas.AI launches.</p>
-                        <button class="cta-button close-modal">Close</button>
-                    `;
-                } catch (error) {
-                    button.textContent = originalText;
-                    alert('Something went wrong. Please try again.');
-                }
-            });
-        });
-    });
-
     // === Parallax Effect for Hero Section ===
     const heroImage = document.querySelector('.hero-image');
     if (heroImage) {
