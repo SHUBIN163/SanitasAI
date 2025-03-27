@@ -244,35 +244,38 @@ body {
 
 /* === Features Section === */
 .features {
-    padding: 8rem 5%;
+    padding: 2rem 5%;
+    background: var(--background);
+    position: relative;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.features h2 {
+    font-size: 2rem;
+    text-align: left;
+    color: var(--text-color);
+    position: relative;
+    margin: 0;
+}
+
+.features .cta-button {
+    margin: 0;
+    white-space: nowrap;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+}
+
+.features-content {
+    padding: 6rem 5%;
     background: linear-gradient(135deg,
         rgba(107, 44, 148, 0.08) 0%,
         rgba(255, 75, 75, 0.05) 50%,
         rgba(255, 215, 0, 0.03) 100%
     );
-    position: relative;
-    color: var(--text-color);
-}
-
-.features::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(107, 44, 148, 0.05) 0%, transparent 70%),
-        radial-gradient(circle at 80% 70%, rgba(255, 75, 75, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.features h2 {
-    font-size: 3.5rem;
-    margin-bottom: 5rem;
-    text-align: center;
-    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-middle));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
 }
 
 .features-grid {
@@ -408,14 +411,21 @@ body {
 
 @media (max-width: 768px) {
     .features {
-        padding: 4rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 1.5rem;
     }
     
     .features h2 {
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
+        font-size: 1.8rem;
+        text-align: center;
     }
-    
+
+    .features-content {
+        padding: 3rem 1.5rem;
+    }
+
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
